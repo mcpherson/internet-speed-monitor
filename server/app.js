@@ -10,7 +10,7 @@ const port = 3000;
 app.use(express.json());
 app.use(express.text());
 
-app.post("/", (req, res) => {
+app.post("/mcpherson", (req, res) => {
   let auth = Buffer.from(req.headers.authorization.split(" ")[1], "base64")
     .toString()
     .split(":");
@@ -29,7 +29,7 @@ app.post("/", (req, res) => {
   res.send();
 });
 
-app.get("/", (req, res) => {
+app.get("/mcpherson", (req, res) => {
   fs.readFile(dataFile, "utf8", (err, data) => {
     if (err) {
       console.error(err);
@@ -78,3 +78,5 @@ function transformData(data) {
   });
   return transformedData;
 }
+
+// TODO: Server logs, PM2, curl testing
