@@ -50,6 +50,10 @@ function transformData(data) {
 
   lines.forEach((line, i) => {
     const parts = line.split(" ");
+    // catch errors resulting from empty or malformed line
+    if (parts.length !== 4) {
+      return;
+    }
     const oldDate = parts[0].split("/");
     const oldMonth = Number(oldDate[0]) - 1;
     const oldYear = Number(oldDate[2]) + 2000;
